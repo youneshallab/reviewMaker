@@ -1,7 +1,6 @@
 import React from 'react'
 import ReviewCard from './ReviewCard'
-import store from "../store/store"
-import {useSelector,useDispatch} from "react-redux"
+import {useSelector} from "react-redux"
 
 export default function Reviews() {
 

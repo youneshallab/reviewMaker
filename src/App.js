@@ -8,7 +8,7 @@ export default function App() {
 
 
   return (
-    <div className="bg-[url('./img/reviewsbg.png')] h-screen">
+    <div className="bg-[url('./img/reviewsbg.png')] bg-cover">
         <Header />
         <Main />
     </div>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { useEffect} from 'react'
-import store from "../store/store"
 import {useSelector,useDispatch} from "react-redux"
 import {update,add,addreview} from "../store/actions"
 
@@ -39,7 +38,7 @@ export default function Forms(props) {
         console.error("There was an error :", error)
       })
   },
-  [counter])
+  [counter,defaultComment,dispatch])
 
   const handleChange = (event) => {
     dispatch(update({
