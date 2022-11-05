@@ -10,7 +10,6 @@ export default function Forms(props) {
   const defaultComment = useSelector(store => store.defaultComment)
   const randomReview = useSelector(store => store.randomReview)
   const allReviews = useSelector(store => store.allReviews)
-  const [data, setData] = React.useState(null)
   
   useEffect(() =>{
     fetch("https://randomuser.me/api/")
@@ -22,7 +21,6 @@ export default function Forms(props) {
       })
     
       .then(data => {
-        setData(data)
         if(data){
           dispatch(update({
             firstName: data.results["0"].name.first,
