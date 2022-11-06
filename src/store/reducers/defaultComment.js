@@ -1,4 +1,4 @@
-export default (state = "", action) => {
+const defaultComment = (state = "", action) => {
     switch(action.type){
         default:
             return "Lorem ipsum dolor sit amet, consectetur adipiscing elit."+
@@ -7,3 +7,5 @@ export default (state = "", action) => {
             " at viverra. Vivamus egestas suscipit neque, quis tincidunt felis hendrerit id.";
     }
 }
+
+export default defaultComment;
