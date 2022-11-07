@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect} from 'react'
-import {useSelector,useDispatch} from "react-redux"
-import {update,add,addreview} from "../store/actions"
+import {useSelector,useDispatch, applyMiddleware} from "react-redux"
+
 
 export default function Forms(props) {
 
@@ -10,7 +10,7 @@ export default function Forms(props) {
   const defaultComment = useSelector(store => store.defaultComment)
   const randomReview = useSelector(store => store.randomReview)
   const allReviews = useSelector(store => store.allReviews)
-  
+  /*
   useEffect(() =>{
     fetch("https://randomuser.me/api/")
       .then(response =>{
@@ -19,7 +19,7 @@ export default function Forms(props) {
         }
         throw response
       })
-    
+      /*
       .then(data => {
         if(data){
           dispatch(update({
@@ -36,7 +36,7 @@ export default function Forms(props) {
         console.error("There was an error :", error)
       })
   },
-  [counter,defaultComment,dispatch])
+  [counter,defaultComment,dispatch])*/
 
   const handleChange = (event) => {
     dispatch(update({
