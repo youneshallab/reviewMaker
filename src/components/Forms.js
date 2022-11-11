@@ -11,32 +11,25 @@ export default function Forms(props) {
   const randomReview = useSelector(store => store.randomReview)
   const allReviews = useSelector(store => store.allReviews)
   
-  useEffect(() =>{
-    fetch("https://randomuser.me/api/")
-      .then(response =>{
-        if(response.ok){
-          return response.json()
-        }
-        throw response
-      })
-    
-      .then(data => {
-        if(data){
-          dispatch(update({
-            firstName: data.results["0"].name.first,
-            lastName: data.results["0"].name.last,
-            country: data.results["0"].location.country,
-            age: data.results["0"].dob.age,
-            review: defaultComment.slice(0,Math.floor(Math.random()*113+2)),
-            rating: Math.floor(Math.random()*6),
-            }))
-          }
-      })
-      .catch(error => {
-        console.error("There was an error :", error)
-      })
-  },
-  [counter,defaultComment,dispatch])
+
+  async function getRandomUser(){
+    let response = await fetch("https://randomuser.me/api/")
+    let data = await response.json()
+    return data
+  }
+
+  useEffect(()=>{
+    getRandomUser().then(data=>{
+      dispatch(update({
+      firstName: data.results["0"].name.first,
+      lastName: data.results["0"].name.last,
+      country: data.results["0"].location.country,
+      age: data.results["0"].dob.age,
+      review: defaultComment.slice(0,Math.floor(Math.random()*113+2)),
+      rating: Math.floor(Math.random()*6),}))
+    })
+  },[dispatch, counter, defaultComment])
+
 
   const handleChange = (event) => {
     dispatch(update({
