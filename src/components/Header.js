@@ -1,3 +1,4 @@
+import i18next from 'i18next'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 
@@ -29,15 +30,18 @@ function Header() {
         {
           onLanguageSelection &&
           <div className='w-26 z-50 relative bg-white bg-opacity-100 rounded-r-md rounded-bl-md'>
-            <div className='flex  hover:bg-gray-200 hover:rounded-tr-md cursor-pointer ml-1'>
+            <div className='flex  hover:bg-gray-200 hover:rounded-tr-md cursor-pointer ml-1'
+               key={'ar'} onClick={() => i18next.changeLanguage('ar')}>
               <img className='mr-1' src="https://img.icons8.com/offices/30/null/morocco.png" alt="Morocco"/>
               <p>العربية</p>
             </div>
-            <div className='flex  hover:bg-gray-200 cursor-pointer ml-1'>
+            <div className='flex  hover:bg-gray-200 cursor-pointer ml-1'
+                 key={'fr'} onClick={() => i18next.changeLanguage('fr')}>
               <img className='mr-1' src="https://img.icons8.com/offices/30/null/france.png" alt="France"/>
               <p>Français</p>
             </div>
-            <div className='flex hover:bg-gray-200 hover:rounded-b-md cursor-pointer ml-1'>
+            <div className='flex hover:bg-gray-200 hover:rounded-b-md cursor-pointer ml-1'
+                 key={'en'} onClick={() => i18next.changeLanguage('en')}>
               <img className='mr-1' src="https://img.icons8.com/offices/30/null/great-britain.png" alt="Great Britain"/>
               <p>English</p>
             </div>
