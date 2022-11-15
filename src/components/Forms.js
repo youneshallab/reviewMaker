@@ -58,7 +58,7 @@ export default function Forms(props) {
           <div className='flex flex-row justify-between'>
             <div className='flex flex-col'>
               <h3 className='font-bold text-sm'>{t('firstname')}</h3>
-              <input className='w-32 border border-gray-400 pl-1'
+              <input className='w-32 border border-gray-400 ps-1'
                 type= 'text'
                 name='firstName'
                 value={randomReview.firstName}
@@ -67,7 +67,7 @@ export default function Forms(props) {
             </div>
             <div className='flex flex-col'>
               <h3 className='font-bold text-sm'>{t('lastname')}</h3>
-              <input className='w-32 border border-gray-400 pl-1'
+              <input className='w-32 border border-gray-400 ps-1'
                 type= 'text'
                 name='lastName'
                 value={randomReview.lastName}
@@ -78,16 +78,16 @@ export default function Forms(props) {
           <div className='flex flex-row justify-between'>
             <div className='flex flex-col'>
             <h3 className='font-bold text-sm'>{t('country')}</h3>
-              <input className='w-32 border border-gray-400 pl-1'
+              <input className='w-32 border border-gray-400 ps-1'
                 type= 'text'
                 name='country'
                 value={randomReview.country}
                 onChange={handleChange}
               />
             </div>
-            <div className='flex flex-col'>
+            <div className='flex flex-col w-32'>
             <h3 className='font-bold text-sm'>{t('age')}</h3>
-              <input className='w-10 mr-[5.5rem] border border-gray-400 pl-1'
+              <input className='w-10 border border-gray-400 ps-1'
                 type= 'text'
                 name='age'
                 value={randomReview.age}
@@ -97,7 +97,7 @@ export default function Forms(props) {
           </div>
           <div>
             <h3 className='font-bold text-sm'>{t('comment')}</h3>
-            <textarea className='w-full h-20 resize-none  border border-gray-400 pl-1'
+            <textarea className='w-full h-20 resize-none  border border-gray-400 ps-1'
               type= 'text'
               name='comment'
               value={randomReview.review}
@@ -107,7 +107,7 @@ export default function Forms(props) {
           <div>
             <h3 className='font-bold text-sm'>{t('rating')}</h3>
             <div className='flex flex-row'>
-              <select className='w-10  border border-gray-400 pl-1 mr-1'
+              <select className='w-10  border border-gray-400 pl-1 me-1'
                   id="rating" 
                   name="rating"
                   value={randomReview.rating ? randomReview.rating : 0}
