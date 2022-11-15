@@ -15,7 +15,7 @@ const is = allReviews[props.index].rating
         }
 
   return (
-    <div className="w-full bg-gray-600 bg-opacity-70 rounded-md px-3 py-2">
+    <div className="w-full bg-gray-600 bg-opacity-70 rounded-md px-3 py-2"   dir="ltr">
         <div className="flex display-row items-center gap-2">
             <h4 className="font-bold">{allReviews[props.index].firstName}</h4>
             <h4 className="font-bold">{allReviews[props.index].lastName}</h4>

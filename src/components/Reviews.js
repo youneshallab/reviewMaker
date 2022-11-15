@@ -9,7 +9,7 @@ export default function Reviews() {
   
   const listOfReviews = []
   for (let i=0;i<allReviews.length;i++){
-    listOfReviews.unshift(<ReviewCard index={i}/>)
+    listOfReviews.unshift(<ReviewCard  dir="ltr" index={i}/>)
   }
 
   return (
