@@ -35,7 +35,7 @@ export default function Forms(props) {
   const handleChange = (event) => {
     dispatch(update({
       ...randomReview,
-      [event.target.name]: parseInt(event.target.value)
+      [event.target.name]: event.target.value
     }))
   }
 
@@ -88,7 +88,7 @@ export default function Forms(props) {
             <div className='flex flex-col w-32'>
             <h3 className='font-bold text-sm'>{t('age')}</h3>
               <input className='w-10 border border-gray-400 ps-1'
-                type= 'text'
+                type='text'
                 name='age'
                 value={randomReview.age}
                 onChange={handleChange}
