@@ -2,8 +2,10 @@ import React from 'react'
 import { useEffect} from 'react'
 import {useSelector,useDispatch} from "react-redux"
 import {update,add,addreview} from "../store/actions"
+import { useTranslation } from 'react-i18next'
 
 export default function Forms(props) {
+  const { t } = useTranslation()
 
   const dispatch = useDispatch()
   const counter = useSelector(store => store.counter)
@@ -11,7 +13,6 @@ export default function Forms(props) {
   const randomReview = useSelector(store => store.randomReview)
   const allReviews = useSelector(store => store.allReviews)
   
-
   async function getRandomUser(){
     let response = await fetch("https://randomuser.me/api/")
     let data = await response.json()
@@ -49,13 +50,14 @@ export default function Forms(props) {
     <div>
         <form className='flex flex-col w-[500px] bg-gray-100 bg-opacity-40 px-16 py-6 gap-2'
               onSubmit={handleSubmit}>
-          <h1 className='font-bold text-lg'>Review Form</h1>
-          <h2 className='text-xs mb-4'>A random user is generated after each upload, but you 
+          <h1 className='font-bold text-lg'>{t('reviewform')}</h1>
+          {/* <h2 className='text-xs mb-4'>A random user is generated after each upload, but you 
             can <strong className='cursor-pointer'  onClick={() => dispatch(add())}>Click here</strong> to change it before upload.
-          </h2>
+          </h2> */}
+          <h2 className='text-xs mb-4'>{t('instruction')}</h2>
           <div className='flex flex-row justify-between'>
             <div className='flex flex-col'>
-              <h3 className='font-bold text-sm'>First Name</h3>
+              <h3 className='font-bold text-sm'>{t('firstname')}</h3>
               <input className='w-32 border border-gray-400 pl-1'
                 type= 'text'
                 name='firstName'
@@ -64,7 +66,7 @@ export default function Forms(props) {
               />
             </div>
             <div className='flex flex-col'>
-              <h3 className='font-bold text-sm'>Last Name</h3>
+              <h3 className='font-bold text-sm'>{t('lastname')}</h3>
               <input className='w-32 border border-gray-400 pl-1'
                 type= 'text'
                 name='lastName'
@@ -75,7 +77,7 @@ export default function Forms(props) {
           </div>
           <div className='flex flex-row justify-between'>
             <div className='flex flex-col'>
-            <h3 className='font-bold text-sm'>Country</h3>
+            <h3 className='font-bold text-sm'>{t('country')}</h3>
               <input className='w-32 border border-gray-400 pl-1'
                 type= 'text'
                 name='country'
@@ -84,7 +86,7 @@ export default function Forms(props) {
               />
             </div>
             <div className='flex flex-col'>
-            <h3 className='font-bold text-sm'>Age</h3>
+            <h3 className='font-bold text-sm'>{t('age')}</h3>
               <input className='w-10 mr-[5.5rem] border border-gray-400 pl-1'
                 type= 'text'
                 name='age'
@@ -94,7 +96,7 @@ export default function Forms(props) {
             </div>
           </div>
           <div>
-            <h3 className='font-bold text-sm'>Comments</h3>
+            <h3 className='font-bold text-sm'>{t('comment')}</h3>
             <textarea className='w-full h-20 resize-none  border border-gray-400 pl-1'
               type= 'text'
               name='comment'
@@ -103,7 +105,7 @@ export default function Forms(props) {
             />
           </div>
           <div>
-            <h3 className='font-bold text-sm'>Product Rating</h3>
+            <h3 className='font-bold text-sm'>{t('rating')}</h3>
             <div className='flex flex-row'>
               <select className='w-10  border border-gray-400 pl-1 mr-1'
                   id="rating" 
@@ -118,14 +120,14 @@ export default function Forms(props) {
                   <option value={4}>4</option>
                   <option value={5}>5</option>
               </select>
-              <h2 className='text-sm font-semibold flex self-center'>Star{(randomReview.rating !== 1)? "s" : ""}</h2>
+              <h2 className='text-sm font-semibold flex self-center'>{t('star_one')}</h2>
             </div>
             
           </div>
           <button 
           className="btn-primary w-40 mt-4 self-end"
           >
-            Upload Review
+            {t('uploadreview')}
           </button>
         </form>
     </div>
