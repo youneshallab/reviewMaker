@@ -3,33 +3,51 @@ import { useEffect} from 'react'
 import {useSelector,useDispatch} from "react-redux"
 import {update,add,addreview} from "../store/actions"
 import { useTranslation } from 'react-i18next'
+import reviewsbad from './reviewsbad.json'
+import reviewsok from './reviewsok.json'
+import reviewsgood from './reviewsgood.json'
 
 export default function Forms(props) {
   const { t } = useTranslation()
 
   const dispatch = useDispatch()
   const counter = useSelector(store => store.counter)
-  const defaultComment = useSelector(store => store.defaultComment)
   const randomReview = useSelector(store => store.randomReview)
   const allReviews = useSelector(store => store.allReviews)
-  
+
   async function getRandomUser(){
     let response = await fetch("https://randomuser.me/api/")
     let data = await response.json()
     return data
   }
 
+  function getRandomReviewBasedOnStar(star){
+    if(star === 0 || star === 1){
+      return reviewsbad[`${Math.floor(Math.random()*reviewsbad.length)}`].completion
+    }else{
+      if(star === 2 || star === 3){
+        return reviewsok[`${Math.floor(Math.random()*reviewsok.length)}`].completion
+      }else{
+        return reviewsgood[`${Math.floor(Math.random()*reviewsgood.length)}`].completion
+      }
+    }
+  }
+
+  
   useEffect(()=>{
+    let nos = Math.floor(Math.random()*6);
+    let rev = getRandomReviewBasedOnStar(nos);
     getRandomUser().then(data=>{
       dispatch(update({
       firstName: data.results["0"].name.first,
       lastName: data.results["0"].name.last,
       country: data.results["0"].location.country,
       age: data.results["0"].dob.age,
-      review: defaultComment.slice(0,Math.floor(Math.random()*113+2)),
-      rating: Math.floor(Math.random()*6),}))
+      rating: nos,
+      review: rev,
+      }))
     })
-  },[dispatch, counter, defaultComment])
+  },[dispatch, counter])
 
 
   const handleChange = (event) => {
@@ -123,7 +141,6 @@ export default function Forms(props) {
               </select>
               <h2 className='text-sm font-semibold flex self-center'>{t('star', {count: parseInt(randomReview.rating)} )}</h2>
             </div>
-            
           </div>
           <button 
           className="btn-primary w-40 mt-4 self-end"
