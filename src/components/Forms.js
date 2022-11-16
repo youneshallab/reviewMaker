@@ -51,10 +51,11 @@ export default function Forms(props) {
         <form className='flex flex-col w-[500px] bg-gray-100 bg-opacity-40 px-16 py-6 gap-2'
               onSubmit={handleSubmit}>
           <h1 className='font-bold text-lg'>{t('reviewform')}</h1>
-          {/* <h2 className='text-xs mb-4'>A random user is generated after each upload, but you 
-            can <strong className='cursor-pointer'  onClick={() => dispatch(add())}>Click here</strong> to change it before upload.
-          </h2> */}
-          <h2 className='text-xs mb-4'>{t('instruction')}</h2>
+          <h2 className='text-xs mb-4'>{t('instruction.firstpart')}
+          <strong className='cursor-pointer'  onClick={() => dispatch(add())}>{t('instruction.clickherepart')}</strong>
+          {t('instruction.lastpart')}
+          </h2>
+          {/* <h2 className='text-xs mb-4'>{t('instruction')}</h2> */}
           <div className='flex flex-row justify-between'>
             <div className='flex flex-col'>
               <h3 className='font-bold text-sm'>{t('firstname')}</h3>
@@ -99,7 +100,7 @@ export default function Forms(props) {
             <h3 className='font-bold text-sm'>{t('comment')}</h3>
             <textarea className='w-full h-20 resize-none  border border-gray-400 ps-1'
               type= 'text'
-              name='comment'
+              name='review'
               value={randomReview.review}
               onChange={handleChange}
             />
@@ -120,7 +121,7 @@ export default function Forms(props) {
                   <option value={4}>4</option>
                   <option value={5}>5</option>
               </select>
-              <h2 className='text-sm font-semibold flex self-center'>{t('star_one')}</h2>
+              <h2 className='text-sm font-semibold flex self-center'>{t('star', {count: parseInt(randomReview.rating)} )}</h2>
             </div>
             
           </div>
